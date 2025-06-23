@@ -202,4 +202,7 @@ Avoid design patterns when:
 
 ---
 
-Would you like this content exported as a PDF, markdown document, or continued as a blog/article series?
+![image](https://github.com/user-attachments/assets/21cc3cd2-12ff-47cd-9140-01e0899f63a4)
+![image](https://github.com/user-attachments/assets/792b5384-779b-46e2-a22a-9e70737058a7)
+![image](https://github.com/user-attachments/assets/6352eaba-c8b0-49d0-a6a3-80cdf254e2ee)
+![image](https://github.com/user-attachments/assets/8e173eba-566b-4eef-bcb6-9729144bd072)
