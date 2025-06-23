@@ -1,7 +1,3 @@
-Thank you for the full draft. Here's a cleaned-up, **well-structured version** of your **Java Design Patterns Tutorial**, preserving your original content while improving grammar, formatting, and consistency.
-
----
-
 # **Java Design Patterns Tutorial**
 
 **Last Updated: 03 Jan, 2025**
