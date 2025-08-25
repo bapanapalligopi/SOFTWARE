@@ -382,5 +382,60 @@ Perfect question 👍 Let’s break this down into **when to use** and **when no
 
 ---
 
-Would you like me to also make a **comparison table** (✔️ when to use vs ❌ when not to use) for quick revision?
+Perfect 👍 Here’s a **clear comparison table** for quick revision:
+
+---
+
+# 📌 Builder Design Pattern – When to Use vs. When Not to Use
+
+| ✅ **When to Use**                                                                                                        | ❌ **When Not to Use**                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Complex Object Construction** – Object has many optional fields or parts (e.g., Computer with CPU, RAM, GPU, Storage). | **Simple Objects** – Only a few fields, like `User(name, age)`. A constructor or setters are enough.                                        |
+| **Step-by-Step Construction** – Object must be created in a sequence of steps (e.g., Meal: Burger → Fries → Drink).      | **Performance-Critical Apps** – Builder introduces extra method calls and objects → unnecessary overhead.                                   |
+| **Avoiding Telescoping Constructors** – To avoid long constructors with many parameters.                                 | **Immutable Objects with Final Fields** – Simple immutable objects (e.g., Java record, DTOs) can be built with constructor/factory methods. |
+| **Configurable Object Creation** – You want flexibility to build different variations (Gaming PC vs Office PC).          | **Unnecessary Complexity** – If the object is simple, adding a builder class just increases boilerplate code.                               |
+| **Multiple Representations** – Same steps can create different versions (e.g., DocumentBuilder → PDF, Word, HTML).       | **Tight Coupling** – If builder is heavily tied to product, any change in product requires changing the builder too.                        |
+
+---
+
+👉 **Rule of Thumb:**
+
+* If your object looks like a **custom-built car/house/computer**, use **Builder**.
+* If it looks like a **simple record or POJO**, don’t bother — stick with constructors/factories.
+
+---
+
+Great! 🚀 Here’s a **real-world analogy table** for the **Builder Design Pattern** so it’s super easy to remember:
+
+---
+
+# 🏗️ Builder Design Pattern – Real World Analogies
+
+| **Scenario**              | **Explanation (Builder in Action)**                                                                                                                                      |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **House Construction** 🏠 | A contractor (Director) follows a fixed process → build walls, add roof, add rooms. Different builders (LuxuryHouseBuilder, SimpleHouseBuilder) create different houses. |
+| **Restaurant Meal** 🍔    | Meal Builder builds a meal step by step → Burger, Fries, Drink. Same process, but a **Veg Meal Builder** vs **Non-Veg Meal Builder** produces different meals.           |
+| **Car Manufacturing** 🚗  | Director follows steps → build engine, set wheels, add seats. Different builders (SportsCarBuilder, FamilyCarBuilder) create different cars.                             |
+| **Computer Assembly** 💻  | Builder sets CPU, RAM, Storage. A GamingComputerBuilder vs OfficeComputerBuilder produces different configurations.                                                      |
+| **Document Creation** 📄  | A DocumentBuilder creates a report. The same steps (add header, add body, add footer) can output **PDF**, **Word**, or **HTML**.                                         |
+| **Vacation Package** ✈️   | A TravelAgent (Director) creates a vacation package step by step: flight, hotel, activities. Different builders produce **Luxury Package** or **Budget Package**.        |
+
+---
+
+✅ The key idea:
+
+* The **process (steps)** stays the same.
+* The **result (product)** changes depending on which builder is used.
+
+---
+
+Here’s the **flow diagram** of the Builder Design Pattern:
+
+* **Client** → requests the build.
+* **Director** → controls the building process.
+* **Builder (interface)** → defines steps.
+* **Concrete Builders** → implement steps differently.
+* **Product** → final complex object.
+
+Would you like me to also prepare a **real-world version of this diagram** (e.g., “Restaurant → Chef → Veg/Non-Veg Builder → Meal”)?
 
