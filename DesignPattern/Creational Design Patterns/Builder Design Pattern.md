@@ -437,5 +437,360 @@ Here’s the **flow diagram** of the Builder Design Pattern:
 * **Concrete Builders** → implement steps differently.
 * **Product** → final complex object.
 
-Would you like me to also prepare a **real-world version of this diagram** (e.g., “Restaurant → Chef → Veg/Non-Veg Builder → Meal”)?
+Perfect 🚀 Let’s implement **5 examples** of the **Builder Design Pattern in Java**, each matching the real-world analogies you asked for:
+
+---
+
+# 1️⃣ **Restaurant Meal 🍔**
+
+```java
+// Product
+class Meal {
+    private String burger;
+    private String drink;
+    private String side;
+
+    public void setBurger(String burger) { this.burger = burger; }
+    public void setDrink(String drink) { this.drink = drink; }
+    public void setSide(String side) { this.side = side; }
+
+    @Override
+    public String toString() {
+        return "Meal [Burger=" + burger + ", Drink=" + drink + ", Side=" + side + "]";
+    }
+}
+
+// Builder Interface
+interface MealBuilder {
+    void buildBurger();
+    void buildDrink();
+    void buildSide();
+    Meal getMeal();
+}
+
+// Concrete Builders
+class VegMealBuilder implements MealBuilder {
+    private Meal meal = new Meal();
+    public void buildBurger() { meal.setBurger("Veg Burger"); }
+    public void buildDrink() { meal.setDrink("Coke"); }
+    public void buildSide() { meal.setSide("French Fries"); }
+    public Meal getMeal() { return meal; }
+}
+
+class NonVegMealBuilder implements MealBuilder {
+    private Meal meal = new Meal();
+    public void buildBurger() { meal.setBurger("Chicken Burger"); }
+    public void buildDrink() { meal.setDrink("Pepsi"); }
+    public void buildSide() { meal.setSide("Onion Rings"); }
+    public Meal getMeal() { return meal; }
+}
+
+// Director
+class MealDirector {
+    private MealBuilder builder;
+    public MealDirector(MealBuilder builder) { this.builder = builder; }
+    public Meal constructMeal() {
+        builder.buildBurger();
+        builder.buildDrink();
+        builder.buildSide();
+        return builder.getMeal();
+    }
+}
+
+// Client
+public class RestaurantDemo {
+    public static void main(String[] args) {
+        MealDirector director = new MealDirector(new VegMealBuilder());
+        System.out.println("Veg Meal: " + director.constructMeal());
+
+        director = new MealDirector(new NonVegMealBuilder());
+        System.out.println("Non-Veg Meal: " + director.constructMeal());
+    }
+}
+```
+
+---
+
+# 2️⃣ **Car Manufacturing 🚗**
+
+```java
+// Product
+class Car {
+    private String engine;
+    private String seats;
+    private String wheels;
+
+    public void setEngine(String engine) { this.engine = engine; }
+    public void setSeats(String seats) { this.seats = seats; }
+    public void setWheels(String wheels) { this.wheels = wheels; }
+
+    @Override
+    public String toString() {
+        return "Car [Engine=" + engine + ", Seats=" + seats + ", Wheels=" + wheels + "]";
+    }
+}
+
+// Builder
+interface CarBuilder {
+    void buildEngine();
+    void buildSeats();
+    void buildWheels();
+    Car getCar();
+}
+
+// Concrete Builders
+class SportsCarBuilder implements CarBuilder {
+    private Car car = new Car();
+    public void buildEngine() { car.setEngine("V8 Engine"); }
+    public void buildSeats() { car.setSeats("2 Leather Seats"); }
+    public void buildWheels() { car.setWheels("Alloy Wheels"); }
+    public Car getCar() { return car; }
+}
+
+class FamilyCarBuilder implements CarBuilder {
+    private Car car = new Car();
+    public void buildEngine() { car.setEngine("V4 Engine"); }
+    public void buildSeats() { car.setSeats("5 Comfort Seats"); }
+    public void buildWheels() { car.setWheels("Standard Wheels"); }
+    public Car getCar() { return car; }
+}
+
+// Director
+class CarDirector {
+    private CarBuilder builder;
+    public CarDirector(CarBuilder builder) { this.builder = builder; }
+    public Car constructCar() {
+        builder.buildEngine();
+        builder.buildSeats();
+        builder.buildWheels();
+        return builder.getCar();
+    }
+}
+
+// Client
+public class CarManufacturingDemo {
+    public static void main(String[] args) {
+        CarDirector director = new CarDirector(new SportsCarBuilder());
+        System.out.println("Sports Car: " + director.constructCar());
+
+        director = new CarDirector(new FamilyCarBuilder());
+        System.out.println("Family Car: " + director.constructCar());
+    }
+}
+```
+
+---
+
+# 3️⃣ **Computer Assembly 💻**
+
+```java
+// Product
+class Computer {
+    private String CPU;
+    private String RAM;
+    private String storage;
+
+    public void setCPU(String CPU) { this.CPU = CPU; }
+    public void setRAM(String RAM) { this.RAM = RAM; }
+    public void setStorage(String storage) { this.storage = storage; }
+
+    @Override
+    public String toString() {
+        return "Computer [CPU=" + CPU + ", RAM=" + RAM + ", Storage=" + storage + "]";
+    }
+}
+
+// Builder
+interface ComputerBuilder {
+    void buildCPU();
+    void buildRAM();
+    void buildStorage();
+    Computer getComputer();
+}
+
+// Concrete Builders
+class GamingComputerBuilder implements ComputerBuilder {
+    private Computer computer = new Computer();
+    public void buildCPU() { computer.setCPU("Intel i9"); }
+    public void buildRAM() { computer.setRAM("32GB DDR5"); }
+    public void buildStorage() { computer.setStorage("2TB SSD"); }
+    public Computer getComputer() { return computer; }
+}
+
+class OfficeComputerBuilder implements ComputerBuilder {
+    private Computer computer = new Computer();
+    public void buildCPU() { computer.setCPU("Intel i5"); }
+    public void buildRAM() { computer.setRAM("16GB DDR4"); }
+    public void buildStorage() { computer.setStorage("512GB SSD"); }
+    public Computer getComputer() { return computer; }
+}
+
+// Director
+class ComputerDirector {
+    private ComputerBuilder builder;
+    public ComputerDirector(ComputerBuilder builder) { this.builder = builder; }
+    public Computer constructComputer() {
+        builder.buildCPU();
+        builder.buildRAM();
+        builder.buildStorage();
+        return builder.getComputer();
+    }
+}
+
+// Client
+public class ComputerAssemblyDemo {
+    public static void main(String[] args) {
+        ComputerDirector director = new ComputerDirector(new GamingComputerBuilder());
+        System.out.println("Gaming PC: " + director.constructComputer());
+
+        director = new ComputerDirector(new OfficeComputerBuilder());
+        System.out.println("Office PC: " + director.constructComputer());
+    }
+}
+```
+
+---
+
+# 4️⃣ **Document Creation 📄**
+
+```java
+// Product
+class Document {
+    private String header;
+    private String body;
+    private String footer;
+
+    public void setHeader(String header) { this.header = header; }
+    public void setBody(String body) { this.body = body; }
+    public void setFooter(String footer) { this.footer = footer; }
+
+    @Override
+    public String toString() {
+        return "Document [Header=" + header + ", Body=" + body + ", Footer=" + footer + "]";
+    }
+}
+
+// Builder
+interface DocumentBuilder {
+    void buildHeader();
+    void buildBody();
+    void buildFooter();
+    Document getDocument();
+}
+
+// Concrete Builders
+class PDFDocumentBuilder implements DocumentBuilder {
+    private Document doc = new Document();
+    public void buildHeader() { doc.setHeader("PDF Header"); }
+    public void buildBody() { doc.setBody("PDF Body Content"); }
+    public void buildFooter() { doc.setFooter("PDF Footer"); }
+    public Document getDocument() { return doc; }
+}
+
+class WordDocumentBuilder implements DocumentBuilder {
+    private Document doc = new Document();
+    public void buildHeader() { doc.setHeader("Word Header"); }
+    public void buildBody() { doc.setBody("Word Body Content"); }
+    public void buildFooter() { doc.setFooter("Word Footer"); }
+    public Document getDocument() { return doc; }
+}
+
+// Director
+class DocumentDirector {
+    private DocumentBuilder builder;
+    public DocumentDirector(DocumentBuilder builder) { this.builder = builder; }
+    public Document constructDocument() {
+        builder.buildHeader();
+        builder.buildBody();
+        builder.buildFooter();
+        return builder.getDocument();
+    }
+}
+
+// Client
+public class DocumentCreationDemo {
+    public static void main(String[] args) {
+        DocumentDirector director = new DocumentDirector(new PDFDocumentBuilder());
+        System.out.println("PDF Document: " + director.constructDocument());
+
+        director = new DocumentDirector(new WordDocumentBuilder());
+        System.out.println("Word Document: " + director.constructDocument());
+    }
+}
+```
+
+---
+
+# 5️⃣ **Vacation Package ✈️**
+
+```java
+// Product
+class VacationPackage {
+    private String flight;
+    private String hotel;
+    private String activities;
+
+    public void setFlight(String flight) { this.flight = flight; }
+    public void setHotel(String hotel) { this.hotel = hotel; }
+    public void setActivities(String activities) { this.activities = activities; }
+
+    @Override
+    public String toString() {
+        return "VacationPackage [Flight=" + flight + ", Hotel=" + hotel + ", Activities=" + activities + "]";
+    }
+}
+
+// Builder
+interface VacationBuilder {
+    void buildFlight();
+    void buildHotel();
+    void buildActivities();
+    VacationPackage getPackage();
+}
+
+// Concrete Builders
+class LuxuryVacationBuilder implements VacationBuilder {
+    private VacationPackage pack = new VacationPackage();
+    public void buildFlight() { pack.setFlight("Business Class Flight"); }
+    public void buildHotel() { pack.setHotel("5-Star Resort"); }
+    public void buildActivities() { pack.setActivities("Spa, Scuba Diving, Yacht Tour"); }
+    public VacationPackage getPackage() { return pack; }
+}
+
+class BudgetVacationBuilder implements VacationBuilder {
+    private VacationPackage pack = new VacationPackage();
+    public void buildFlight() { pack.setFlight("Economy Class Flight"); }
+    public void buildHotel() { pack.setHotel("3-Star Hotel"); }
+    public void buildActivities() { pack.setActivities("City Tour, Museum Visit"); }
+    public VacationPackage getPackage() { return pack; }
+}
+
+// Director
+class VacationDirector {
+    private VacationBuilder builder;
+    public VacationDirector(VacationBuilder builder) { this.builder = builder; }
+    public VacationPackage constructVacation() {
+        builder.buildFlight();
+        builder.buildHotel();
+        builder.buildActivities();
+        return builder.getPackage();
+    }
+}
+
+// Client
+public class VacationDemo {
+    public static void main(String[] args) {
+        VacationDirector director = new VacationDirector(new LuxuryVacationBuilder());
+        System.out.println("Luxury Vacation: " + director.constructVacation());
+
+        director = new VacationDirector(new BudgetVacationBuilder());
+        System.out.println("Budget Vacation: " + director.constructVacation());
+    }
+}
+```
+
+---
+
+✅ With these 5 examples, you can see the **same Builder Pattern** applied to different real-world domains.
+Would you like me to also make a **common reusable Builder template** so you don’t repeat so much code (one abstract generic version)?
 
