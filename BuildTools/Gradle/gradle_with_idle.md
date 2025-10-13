@@ -198,3 +198,6 @@ Here’s what you’ll see at each step (conceptually):
 
 Would you like me to **generate visual screenshots** (like simulated VS Code windows and terminal outputs) to match each step?
 I can generate those images for you.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c4bae38a-f6c9-4126-94dd-e66579fcb988" />
+
