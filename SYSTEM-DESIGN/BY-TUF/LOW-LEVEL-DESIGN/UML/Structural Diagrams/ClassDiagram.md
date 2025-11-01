@@ -201,3 +201,16 @@ It is represented with the stereotype `<<enumeration>>`, where literals are list
 | Inheritance       | “Is-a” hierarchy              | Solid line with triangle  | Dog–Animal                  |
 | Realization       | Implements interface          | Dashed line with triangle | Circle–Shape                |
 | Dependency        | Temporary usage               | Dashed line with arrow    | OrderService–PaymentService |
+
+
+
+<img width="424" height="223" alt="image" src="https://github.com/user-attachments/assets/a8e97798-8cec-4e97-a876-da31da137adf" />
+
+<img width="591" height="196" alt="image" src="https://github.com/user-attachments/assets/a54f05e2-ff18-4ae5-8cbb-a932a245f361" />
+
+<img width="458" height="224" alt="image" src="https://github.com/user-attachments/assets/0e329e4d-2d1e-42ba-b9cc-b9cd1197127c" />
+
+<img width="278" height="224" alt="image" src="https://github.com/user-attachments/assets/b302ef93-677e-4ead-bf0f-d18951481fee" />
+<img width="278" height="224" alt="image" src="https://github.com/user-attachments/assets/3ce31793-dc8e-4ef7-afb7-42db6f51325c" />
+<img width="1145" height="525" alt="image" src="https://github.com/user-attachments/assets/f55c2de5-21c8-4817-832a-f09fe925af4b" />
+
