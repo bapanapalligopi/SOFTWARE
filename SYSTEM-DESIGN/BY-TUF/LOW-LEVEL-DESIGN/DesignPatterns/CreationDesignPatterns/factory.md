@@ -182,3 +182,5 @@ public class LogisticsService {
 
 The **Factory Pattern** is one of the most commonly used creational patterns in real-world software.
 It promotes **loose coupling**, **reusability**, and **maintainability** — making it perfect for systems that evolve over time or handle multiple similar object types.
+
+<img width="2760" height="1803" alt="image" src="https://github.com/user-attachments/assets/1db868b3-e549-40f2-b109-38940d19d27f" />
