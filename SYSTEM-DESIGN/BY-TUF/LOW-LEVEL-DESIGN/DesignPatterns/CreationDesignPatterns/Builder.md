@@ -283,3 +283,95 @@ public class BuilderPatternDemo {
 The **Builder Pattern** is a powerful and flexible solution for constructing complex objects step by step.
 It improves **code readability**, **maintainability**, and **safety**, while supporting **immutability** and **fluent APIs**.
 Although slightly verbose, it’s widely used in frameworks and enterprise applications where clarity and flexibility matter.
+
+
+Yes ✅ — in **Java**, you can replace most of the boilerplate Builder code with the **Lombok `@Builder` annotation**.
+
+### 💡 **Lombok @Builder**
+
+The `@Builder` annotation automatically generates:
+
+* A **builder class** (inner static class)
+* All **builder methods** (`.builder()`, `.withField()`, `.build()`)
+* A **private constructor** to enforce immutability
+
+Here’s how it simplifies the code 👇
+
+#### ✅ Traditional Builder (manual code)
+
+```java
+BurgerMeal burger = new BurgerMeal.BurgerBuilder("Sesame", "Beef")
+        .withCheese(true)
+        .withSide("Fries")
+        .withToppings("Lettuce, Tomato")
+        .build();
+```
+
+#### ✅ Same with Lombok `@Builder`
+
+```java
+import lombok.Builder;
+import lombok.ToString;
+
+@Builder
+@ToString
+public class BurgerMeal {
+    private String bun;
+    private String patty;
+    private boolean cheese;
+    private String side;
+    private String toppings;
+}
+```
+
+**Client Code:**
+
+```java
+public class BuilderDemo {
+    public static void main(String[] args) {
+        BurgerMeal burger = BurgerMeal.builder()
+                .bun("Sesame")
+                .patty("Beef")
+                .cheese(true)
+                .side("Fries")
+                .toppings("Lettuce, Tomato")
+                .build();
+
+        System.out.println(burger);
+    }
+}
+```
+
+---
+
+### ⚙️ How It Works
+
+* Lombok automatically generates:
+
+  * A static `builder()` method
+  * A nested `Builder` class with all the `withField()` methods
+  * The final `build()` method
+* It keeps the code clean and concise, just like the **manual Builder pattern**, but with zero boilerplate.
+
+---
+
+### ⚠️ Notes
+
+* You need **Project Lombok** dependency:
+
+  ```xml
+  <!-- Maven -->
+  <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.34</version>
+      <scope>provided</scope>
+  </dependency>
+  ```
+* Works at **compile time** — your IDE (like IntelliJ or Eclipse) must have Lombok plugin enabled.
+* Can be combined with other Lombok annotations like `@Getter`, `@Setter`, `@AllArgsConstructor`, and `@ToString`.
+
+---
+
+Would you like me to show how to combine `@Builder` with `@Value` (for immutable objects, like a record-style builder)?
+
