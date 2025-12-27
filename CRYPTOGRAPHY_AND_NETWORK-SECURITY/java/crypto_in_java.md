@@ -131,4 +131,4 @@ public class CryptoService {
 * **`InvalidKeyException`**: Usually triggered if you try to use a 256-bit key but don't have the "Unlimited Strength Jurisdiction Policy Files" (Note: These are included by default in Java 8u161+).
 * **`AEADBadTagException`**: In GCM mode, this means the data was tampered with or the wrong key was used.
 
-**Would you like me to create a helper class for generating and storing these keys in a Java KeyStore?**
+can i get all these crypto in java with document 
