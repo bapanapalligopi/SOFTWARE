@@ -74,5 +74,12 @@ dev working on one service, shouldn't  require the entire application knowledge
 <img width="943" height="435" alt="image" src="https://github.com/user-attachments/assets/696a9e7f-07e1-4253-8971-bc43feebcf62" />
 
 if Monolithic architecture, because they are all deployed in on signlere no latency in network calls
- because they are deployed in same eserver
+ because they are deployed in same server
  
+<img width="979" height="574" alt="image" src="https://github.com/user-attachments/assets/d951a110-64e8-4b7f-ba86-a54c32552ecd" />
+<img width="846" height="242" alt="image" src="https://github.com/user-attachments/assets/8c26af62-244b-4245-b9e3-fba189181b44" />
+
+springboot- embedded server, autoconfigurations, loose coupling, minimal code, dependency management,
+open source - lots of vendors are working on the open source, support load balancer- automatic scaling
+<img width="947" height="92" alt="image" src="https://github.com/user-attachments/assets/54c505ae-53c4-43ed-bae6-48728eae0f2a" />
+<img width="961" height="572" alt="image" src="https://github.com/user-attachments/assets/06f24eb1-6f45-456f-9102-d501d40eee9e" />
