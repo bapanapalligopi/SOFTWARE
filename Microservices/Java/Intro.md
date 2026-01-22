@@ -73,5 +73,6 @@ dev working on one service, shouldn't  require the entire application knowledge
 
 <img width="943" height="435" alt="image" src="https://github.com/user-attachments/assets/696a9e7f-07e1-4253-8971-bc43feebcf62" />
 
-
+if Monolithic architecture, because they are all deployed in on signlere no latency in network calls
+ because they are deployed in same eserver
  
