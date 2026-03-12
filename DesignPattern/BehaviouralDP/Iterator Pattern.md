@@ -464,3 +464,199 @@ That is **Iterator Pattern**.
 Iterator Pattern lets a payment system **process transactions sequentially without exposing how they are stored internally**.
 
 ---
+Here is the **Class Diagram for the Iterator Pattern in the Payment Domain** (based on the PaymentHistory example).
+
+---
+
+# Iterator Pattern – Payment Domain Class Diagram
+
+```
++-------------------+
+|      Payment      |
++-------------------+
+| - paymentId       |
+| - amount          |
++-------------------+
+| + getPaymentId()  |
+| + getAmount()     |
++-------------------+
+
+
+        contains
+           |
+           v
+
+
++--------------------------+
+|     PaymentCollection    |  <<interface>>
++--------------------------+
+| + createIterator()       |
++--------------------------+
+            ^
+            |
+            |
++--------------------------+
+|      PaymentHistory      |
++--------------------------+
+| - payments : List<Payment> |
++--------------------------+
+| + addPayment()           |
+| + createIterator()       |
++--------------------------+
+
+
+                creates
+                   |
+                   v
+
+
++----------------------+
+|    PaymentIterator   |  <<interface>>
++----------------------+
+| + hasNext()          |
+| + next() : Payment   |
++----------------------+
+            ^
+            |
+            |
++-------------------------------+
+|  PaymentHistoryIterator      |
++-------------------------------+
+| - payments : List<Payment>   |
+| - position : int             |
++-------------------------------+
+| + hasNext()                  |
+| + next()                     |
++-------------------------------+
+```
+
+---
+
+# Relationships Explained
+
+### 1. PaymentHistory → Payment
+
+**Composition**
+
+```
+PaymentHistory contains many Payments
+```
+
+Example:
+
+```
+PaymentHistory
+   |
+   |--- Payment 1
+   |--- Payment 2
+   |--- Payment 3
+```
+
+---
+
+### 2. PaymentHistory → PaymentCollection
+
+**Implements interface**
+
+```
+PaymentHistory implements PaymentCollection
+```
+
+So it must implement:
+
+```
+createIterator()
+```
+
+---
+
+### 3. PaymentHistoryIterator → PaymentIterator
+
+**Implements iterator interface**
+
+```
+PaymentHistoryIterator implements PaymentIterator
+```
+
+Methods:
+
+```
+hasNext()
+next()
+```
+
+---
+
+### 4. PaymentHistory → PaymentHistoryIterator
+
+**Factory Relationship**
+
+```
+createIterator() → returns PaymentHistoryIterator
+```
+
+Client never creates the iterator directly.
+
+---
+
+# Sequence Flow (How It Works)
+
+```
+Client
+  |
+  | createIterator()
+  v
+PaymentHistory
+  |
+  | returns
+  v
+PaymentHistoryIterator
+  |
+  | next()
+  v
+Payment
+```
+
+---
+
+# Real Payment Example Flow
+
+Example transaction history:
+
+```
+PaymentHistory
+  |
+  |-- Payment(P101, ₹500)
+  |-- Payment(P102, ₹1200)
+  |-- Payment(P103, ₹200)
+```
+
+Iterator traversal:
+
+```
+iterator.next() → P101
+iterator.next() → P102
+iterator.next() → P103
+```
+
+---
+
+# Why This Diagram is Good for LLD Interviews
+
+This design ensures:
+
+✔ Encapsulation
+✔ Loose coupling
+✔ Flexible traversal
+✔ Multiple iterators possible
+
+Example new iterators:
+
+```
+FailedPaymentIterator
+HighValuePaymentIterator
+RefundablePaymentIterator
+```
+
+---
+
